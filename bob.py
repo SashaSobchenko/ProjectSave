@@ -199,7 +199,7 @@ job_list = {"Java Developer": {"salary": 50, "gladness_less": 10},
 brands_of_cars = {
     "BMW": {"fuel": 100, "strength": 100, "consumption": 6},
     "Audi": {"fuel": 40, "strength": 50, "consumption": 9},
-    "Honda": {"fuel": 60, "strength": 120, "consumption": 7},
+    "Honda": {"fuel": 65, "strength": 120, "consumption": 7},
     "Ferrari": {"fuel": 80, "strength": 120, "consumption": 14}}
 
 sasha = Human('BOB')
