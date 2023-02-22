@@ -1,209 +1,83 @@
-import random
+# import logging
+
+# logging.basicConfig(level=logging.DEBUG, filename='logs.log', filemode='w', format="We have next logging message: %(asctime)s : %(levelname)s - %(message)s")
+# logging.debug('debug')
+# logging.info('info')
+# logging.warning('warning')
+# logging.error('error')
+# logging.critical('critical')
+
+# try:
+#     print(10/0)
+# except Exception:
+#     logging.exception("Exception")
+
+# x = 4
+# y = 5
+# logging.info(f'The values of x and y are {x} and {y}')
+# try:
+#     result = x/y
+#     logging.info(f"x/y successful with result {result}")
+# except Exception as e:
+#     logging.error('Exception', exc_info=True)
+
+# x_elem = [2, 3, 4, 6, 10]
+# y_elem = [5, 7, 12, 0, 1]
+#
+# # for x_e, y_e in zip(x_elem, y_elem):
+#     x, y = x_e, y_e
+#     logging.info(f'The values of x and y are {x} and {y}')
+#     try:
+#         result = x/y
+#         logging.info(f"x/y successful with result {result}")
+#     except ZeroDivisionError as e:
+#         logging.exception("ZeroDivisionError")
+#
+#
+# a = zip(x_elem, y_elem)
+# print(a.__next__())
+# print(a.__next__())
+# print(tuple(a))
 
 
-class Human:
-    def __init__(self, name="Human", job=None, home=None, car=None):
-        self.name = name
-        self.gladness = 50
-        self.money = 100
-        self.satiety = 50
-        self.job = job
-        self.home = home
-        self.car = car
+# assert 2+2 == 5
+# """
+# >> 2+2
+# 4
+# """
+#
+# if __name__ == "__main__":
+#     import doctest
+#     doctest.testmod()
 
-    def get_home(self):
-        self.home = House()
-
-    def get_job(self):
-        if self.car.drive():
-            pass
+def adder(*args, **kwargs):
+    result = 0
+    for arg in args:
+        if type(arg) == int or type(arg) == float:
+            result += arg
         else:
-            self.to_repair()
-            return
-        self.job = Job(job_list)
-
-    def get_car(self):
-        self.car = Auto(brands_of_cars)
-
-    def eat(self):
-        if self.home.food <=0:
-            self.shopping("food")
+            try:
+                result += float(arg)
+                continue
+            except (ValueError, TypeError):
+                pass
+            try:
+                result += int(arg)
+                continue
+            except (ValueError, TypeError):
+                pass
+    for value in kwargs.values():
+        if type(value) == int or type(value) == float:
+            result += value
         else:
-            if self.satiety >= 100:
-                self.satiety = 100
-                return
-            self.satiety += 5
-            self.home.food -= 5
-
-    def work(self):
-        if self.car.drive():
-            pass
-        else:
-            if self.car.fuel < 20:
-                self.shopping('fuel')
-                return
-            else:
-                self.to_repair()
-                return
-        self.money += self.job.salary
-        self.gladness -= self.job.gladness_less
-        self.satiety -= 4
-
-    def shopping(self, manage):
-        if self.car.drive():
-            pass
-        else:
-            if self.car.fuel < 20:
-                self.shopping('fuel')
-                return
-            else:
-                self.to_repair()
-                return
-        if manage == 'fuel':
-            print("I bought fuel")
-            self.money -= 100
-            self.car.fuel += 100
-        elif manage == 'food':
-            print("I bought food")
-            self.money -= 50
-            self.home.food += 50
-        elif manage == 'delicious!':
-            print("Delicious!")
-            self.money -= 15
-            self.gladness += 10
-            self.satiety += 2
-
-    def play(self):
-        self.gladness += 20
-        self.home.mess += 5
-
-    def chill(self):
-        self.gladness += 10
-        self.home.mess += 15
-
-    def clean_home(self):
-        self.gladness -= 5
-        self.home.mess = 0
-
-    def to_repair(self):
-        self.car.strength += 100
-        self.money -= 50
-
-    def days_indexes(self, day):
-        day = f" Today the {day} of {self.name}`s life"
-        print(f"{day:=^50}", "\n")
-        human_indexes = self.name + "`s indexes"
-        print(f"{human_indexes:-^50}", "\n")
-        print(f"Money - {self.money}")
-        print(f"Satiety - {self.satiety}")
-        print(f"Gladness - {self.gladness}")
-        home_indexes = "Home indexes"
-        print(f"{home_indexes:-^50}", "\n")
-        print(f"Food - {self.home.food}")
-        print(f"Mess - {self.home.mess}")
-        car_indexes = f"{self.car.brand} car indexes"
-        print(f"{car_indexes:-^50}", "\n")
-        print(f"Fuel - {self.car.fuel}")
-        print(f"Strength - {self.car.strength}")
-
-    def is_alive(self):
-        if self.gladness < 0:
-            print('Depression...')
-            return False
-        if self.money < -500:
-            print('Bankrupt')
-            return False
-
-    def live(self, day):
-        if self.is_alive() == False:
-            return False
-        if self.home is None:
-            print('Settled in the House')
-            self.get_home()
-        if self.car is None:
-            self.get_car()
-            print(f"I bought a car {self.car.brand}")
-        if self.job is None:
-            self.get_job()
-            print(f"I dont`have a job, I`m going to get a job{self.job.job}with salary{self.job.salary}")
-        self.days_indexes(day)
-        dice = random.randint(1, 4)
-        if self.satiety <20 :
-            print('I will go to eat')
-            self.eat()
-        elif self.gladness < 20:
-            if self.home.mess > 15:
-                print("I want to chill, but there is so much...\nSo I will clean the house")
-                self.clean_home()
-            else:
-                print("Let`s chill")
-                self.chill()
-        elif self.money < 0:
-            print('Start working')
-            self.work()
-        elif self.car.strength < 15:
-            print('I need to repair my car')
-            self.to_repair()
-        if dice == 1:
-            print('let`s chill')
-            self.chill()
-        elif dice == 2:
-            print('Start working')
-            self.work()
-        elif dice == 3:
-            print('Cleaning time')
-            self.clean_home()
-        elif dice == 4:
-            print('Time for treats')
-            self.shopping("delicacies")
-        elif dice == 5:
-            print('Time to play')
-            self.play()
-
-
-class Auto:
-    def __init__(self, brand_list):
-        self.brand = random.choice(list(brand_list))
-        self.fuel = brand_list[self.brand]['fuel']
-        self.strength = brand_list[self.brand]["strength"]
-        self.consumption = brand_list[self.brand]["consumption"]
-
-    def drive(self):
-        if self.strength > 0 and self.fuel >= self.consumption:
-            self.fuel -= self.consumption
-            self.strength -= 1
-            return True
-        else:
-            print('The car cannot move')
-            return False
-
-
-class House:
-    def __init__(self):
-        self.food = 0
-        self.mess = 0
-
-
-class Job:
-    def __init__(self, job_list):
-        self.job = random.choice(list(job_list))
-        self.salary = job_list[self.job]["salary"]
-        self.gladness_less = job_list[self.job]['gladness_less']
-
-
-job_list = {"Java Developer": {"salary": 50, "gladness_less": 10},
-            "Python Developer": {"salary": 70, "gladness_less": 3},
-            "C++ Developer": {"salary": 45, "gladness_less": 25},
-            "C# Developer": {"salary": 60, "gladness_less": 1}}
-
-brands_of_cars = {
-    "BMW": {"fuel": 100, "strength": 100, "consumption": 6},
-    "Audi": {"fuel": 40, "strength": 50, "consumption": 9},
-    "Honda": {"fuel": 65, "strength": 120, "consumption": 7},
-    "Ferrari": {"fuel": 80, "strength": 120, "consumption": 14}}
-
-sasha = Human('BOB')
-
-for day in range(1,8):
-    if sasha.live(day) == False:
-        break
+            try:
+                result += float(value)
+                continue
+            except (ValueError, TypeError):
+                pass
+            try:
+                result += int(value)
+                continue
+            except (ValueError, TypeError):
+                pass
+    return result
