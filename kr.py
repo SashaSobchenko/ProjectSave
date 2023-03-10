@@ -8,7 +8,7 @@ connection = sqlite3.connect("tablsa.sl3", 5)
 #cur.execute("INSERT INTO first_table (name) VALUES ('https://ru.wikipedia.org/wiki/%D0%9A%D0%B8%D0%B5%D0%B2');")
 #cur.execute("INSERT INTO first_table (name) VALUES ('https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F_%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0');")
 #connection.commit()
-#cur.execute("DELETE FROM first_table WHERE rowid=4")
+# cur.execute("DELETE FROM first_table WHERE rowid=6")
 #connection.commit()
 #cur.execute("SELECT rowid, name FROM first_table")
 #connection.commit()
@@ -21,7 +21,7 @@ connection = sqlite3.connect("tablsa.sl3", 5)
 import requests
 from bs4 import BeautifulSoup
 
-#Зраствуйте Влад если что этот код нужен для 2 програм import sqlite3 и connection = sqlite3.connect("tablsa.sl3", 5)   =)
+#Зраствуйте Влад если что этот код нужен для 2 програм import sqlite3 и connection = sqlite3.connect("tablsa.sl3", 5)   =) + простите не смог убрать я пытался но не смог =(
 cursor = connection.cursor()
 
 search_text = input("Введите текст чтоб я мог его найти: ")
